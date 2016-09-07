@@ -51,3 +51,11 @@ var App = function App(props) {
 };
 /* comment */
 ```
+
+### Lesson 17
+
+Command to precompile JSX:
+
+```
+> babel --presets react src.js -o dist.js --watch
+```
