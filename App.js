@@ -11,17 +11,21 @@ class App extends React.Component {
     this.setState({val: this.state.val + 1})
   }
   componentWillMount() {
-    console.log("mounting")
+    this.setState({m: 2})
   }
   render(){
     console.log("rendering")
-    return <button onClick={this.update}>{this.state.val}</button>
+    return (
+      <div className="padding">
+        <button onClick={this.update} className="btn btn-default btn-lg">{this.state.val}</button>
+      </div>
+    );
   }
   componentDidMount() {
-    console.log("mounted")
+    this.inc = setInterval(this.update,500)
   }
   componentWillUnmount() {
-    console.log("bye")
+    clearInterval(this.inc)
   }
 }
 
@@ -35,9 +39,12 @@ class Wrapper extends React.Component {
     render() {
       return (
         <div>
-          <button onClick={this.mount.bind(this)}>Mount</button>
-          <button onClick={this.unmount.bind(this)}>Unmount</button>
-          <div id="a"></div>
+          <div className="btn-group">
+            <button onClick={this.mount.bind(this)} className="btn btn-default">Mount</button>
+            <button onClick={this.unmount.bind(this)} className="btn btn-default">Unmount</button>
+          </div>
+          <div id="a">
+          </div>
         </div>
       );
     }
